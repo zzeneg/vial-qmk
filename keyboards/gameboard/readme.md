@@ -1,5 +1,7 @@
 # gameboard
 
+![gameboard](https://i.imgur.com/4MAhPqzh.jpg)
+
 Game controller with MX/KS-33 switches.
 
 -   Keyboard Maintainer: [zzeneg](https://github.com/zzeneg)
