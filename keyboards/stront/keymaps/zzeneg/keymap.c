@@ -34,14 +34,6 @@
 #define LCTL_ESC LCTL_T(KC_ESC)
 #define LGUI_QUOT LGUI_T(KC_QUOT)
 
-enum custom_keycodes {
-    M_EMAIL = SAFE_RANGE,
-    M_CBR,
-    M_PRN,
-    M_BRC,
-    M_ARROW,
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* QWERTY
      *               .---------------------------.                    .---------------------------.
@@ -71,10 +63,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_EU] = LAYOUT(
-                               XXXXXXX,     RALT(KC_E),  XXXXXXX,     M_CBR,               KC_MUTE,     RALT(KC_U),  XXXXXXX,  RALT(KC_O),
-        XXXXXXX,  RALT(KC_A),  RALT(KC_S),  LCTL(KC_C),  KC_LSFT,     M_PRN,               M_EMAIL,     KC_RSFT,     M_ARROW,  RALT(KC_L),  XXXXXXX,  XXXXXXX,
-        XXXXXXX,  RALT(KC_Z),  RALT(KC_X),  RALT(KC_C),  LCTL(KC_V),  M_BRC,               RALT(KC_N),  XXXXXXX,     XXXXXXX,  XXXXXXX,     XXXXXXX,  XXXXXXX,
-                                                 FUNC_ESC,   NUM_TAB,   SYM_SPC,      XXXXXXX,  XXXXXXX,   _______
+                               XXXXXXX,     RALT(KC_E),  XXXXXXX,     XXXXXXX,               KC_MUTE,     RALT(KC_U),  XXXXXXX,  RALT(KC_O),
+        XXXXXXX,  RALT(KC_A),  RALT(KC_S),  LCTL(KC_C),  KC_LSFT,     XXXXXXX,               XXXXXXX,     KC_RSFT,     XXXXXXX,  RALT(KC_L),  XXXXXXX,  XXXXXXX,
+        XXXXXXX,  RALT(KC_Z),  RALT(KC_X),  RALT(KC_C),  LCTL(KC_V),  XXXXXXX,               RALT(KC_N),  XXXXXXX,     XXXXXXX,  XXXXXXX,     XXXXXXX,  XXXXXXX,
+                                                    FUNC_ESC,   NUM_TAB,   SYM_SPC,      XXXXXXX,  XXXXXXX,   _______
     ),
 
     [_NAV] = LAYOUT(
@@ -170,23 +162,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     if (record->event.pressed) {
         switch (keycode) {
-            // handle macros
-            case M_EMAIL:
-                SEND_STRING("zzeneg@gmail.com");
-                break;
-            case M_CBR:
-                SEND_STRING("{}" SS_TAP(X_LEFT));
-                break;
-            case M_PRN:
-                SEND_STRING("()" SS_TAP(X_LEFT));
-                break;
-            case M_BRC:
-                SEND_STRING("[]" SS_TAP(X_LEFT));
-                break;
-            case M_ARROW:
-                SEND_STRING("=>");
-                break;
-
             // custom increased tapping term for home row CTRL + other keys
             case HOME_D:
                 // save time when CTRL from D key is pressed
@@ -253,7 +228,7 @@ bool caps_word_press_user(uint16_t keycode) {
 }
 
 /* Raw HID processing*/
-void raw_hid_receive(uint8_t *data, uint8_t length) {
+void raw_hid_receive_kb(uint8_t *data, uint8_t length) {
     dprintf("raw_hid_receive - received %u bytes \n", length);
 
     if (is_display_enabled()) {

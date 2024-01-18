@@ -5,6 +5,17 @@
 
 // #define DEBUG_MATRIX_SCAN_RATE
 
+#define VIAL_KEYBOARD_UID \
+    { 0xF6, 0xFA, 0xD8, 0x61, 0xDE, 0xD5, 0x4A, 0x85 }
+
+/* VIAL secure unlock keystroke - currently both inner thumb keys (typ. SPACE/ENTER) */
+#define VIAL_UNLOCK_COMBO_ROWS \
+    { 3, 7 }
+#define VIAL_UNLOCK_COMBO_COLS \
+    { 4, 4 }
+
+#define DYNAMIC_KEYMAP_LAYER_COUNT 8
+
 #define SPLIT_TRANSACTION_IDS_USER RPC_ID_USER_HID_SYNC, RPC_ID_USER_CAPS_WORD_SYNC, RPC_ID_USER_LAYER_SYNC
 
 #define CIRQUE_PINNACLE_TAP_ENABLE

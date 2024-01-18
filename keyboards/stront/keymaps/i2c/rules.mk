@@ -1,1 +1,7 @@
+ENCODER_MAP_ENABLE = yes
+
+VIA_ENABLE = yes
+VIAL_ENABLE = yes
+VIALRGB_ENABLE = yes
+
 POINTING_DEVICE_DRIVER = cirque_pinnacle_i2c
