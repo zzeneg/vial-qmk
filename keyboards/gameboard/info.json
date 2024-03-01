@@ -1,0 +1,126 @@
+{
+    "keyboard_name": "gameboard",
+    "manufacturer": "zzeneg",
+    "url": "https://github.com/zzeneg/gameboard",
+    "maintainer": "zzeneg",
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                { "matrix": [0, 1], "x": 1, "y": 0 },
+                { "matrix": [0, 2], "x": 2, "y": 0 },
+                { "matrix": [0, 3], "x": 3, "y": 0 },
+                { "matrix": [0, 4], "x": 4, "y": 0 },
+                { "matrix": [0, 5], "x": 5, "y": 0 },
+                { "matrix": [0, 6], "x": 6, "y": 0 },
+
+                { "matrix": [1, 0], "x": 0, "y": 1 },
+                { "matrix": [1, 1], "x": 1, "y": 1 },
+                { "matrix": [1, 2], "x": 2, "y": 1 },
+                { "matrix": [1, 3], "x": 3, "y": 1 },
+                { "matrix": [1, 4], "x": 4, "y": 1 },
+                { "matrix": [1, 5], "x": 5, "y": 1 },
+                { "matrix": [1, 6], "x": 6, "y": 1 },
+
+                { "matrix": [2, 0], "x": 0, "y": 2 },
+                { "matrix": [2, 1], "x": 1, "y": 2 },
+                { "matrix": [2, 2], "x": 2, "y": 2 },
+                { "matrix": [2, 3], "x": 3, "y": 2 },
+                { "matrix": [2, 4], "x": 4, "y": 2 },
+                { "matrix": [2, 5], "x": 5, "y": 2 },
+                { "matrix": [2, 6], "x": 6, "y": 2 },
+
+                { "matrix": [3, 0], "x": 0, "y": 3 },
+                { "matrix": [3, 1], "x": 1, "y": 3 },
+                { "matrix": [3, 2], "x": 2, "y": 3 },
+                { "matrix": [3, 3], "x": 3, "y": 3 },
+                { "matrix": [3, 4], "x": 4, "y": 3 },
+                { "matrix": [3, 5], "x": 5, "y": 3 },
+                { "matrix": [3, 6], "x": 6, "y": 3 },
+
+                { "matrix": [4, 0], "x": 0, "y": 4 },
+                { "matrix": [4, 1], "x": 1, "y": 4 },
+                { "matrix": [4, 2], "x": 2, "y": 4 },
+                { "matrix": [4, 3], "x": 3, "y": 4 },
+                { "matrix": [4, 4], "x": 4, "y": 4 },
+                { "matrix": [4, 5], "x": 5, "y": 4 },
+                { "matrix": [4, 6], "x": 6, "y": 4 },
+
+                { "matrix": [3, 7], "x": 4, "y": 5 },
+                { "matrix": [4, 7], "x": 5, "y": 5 },
+                { "matrix": [1, 7], "x": 2, "y": 5 },
+                { "matrix": [2, 7], "x": 3, "y": 5 },
+                { "matrix": [0, 7], "x": 1, "y": 5 }
+            ]
+        }
+    },
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+    "diode_direction": "COL2ROW",
+    "matrix_pins": {
+        "cols": ["GP12", "GP5", "GP4", "GP3", "GP2", "GP1", "GP0", "GP13"],
+        "rows": ["GP6", "GP7", "GP9", "GP10", "GP11"]
+    },
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "mousekey": true,
+        "extrakey": true,
+        "encoder": false,
+        "rgblight": false,
+        "rgb_matrix": true,
+        "nkro": true
+    },
+    "ws2812": {
+        "pin": "GP8"
+    },
+    "rgblight": {
+        "led_count": 31,
+        "layers": {
+            "enabled": true,
+            "max": 3
+        }
+    },
+    "rgb_matrix": {
+        "driver": "ws2812",
+        "led_count": 31,
+        "layout": [
+            { "flags": 4, "matrix": [1, 0], "x": 0, "y": 20 },
+            { "flags": 4, "matrix": [2, 0], "x": 0, "y": 34 },
+            { "flags": 4, "matrix": [3, 0], "x": 0, "y": 47 },
+            { "flags": 4, "matrix": [3, 1], "x": 37, "y": 46 },
+            { "flags": 4, "matrix": [2, 1], "x": 37, "y": 32 },
+            { "flags": 4, "matrix": [1, 1], "x": 37, "y": 19 },
+            { "flags": 4, "matrix": [0, 1], "x": 37, "y": 6 },
+            { "flags": 4, "matrix": [0, 2], "x": 73, "y": 4 },
+            { "flags": 4, "matrix": [1, 2], "x": 73, "y": 18 },
+            { "flags": 4, "matrix": [2, 2], "x": 73, "y": 31 },
+            { "flags": 4, "matrix": [3, 2], "x": 73, "y": 44 },
+            { "flags": 4, "matrix": [3, 3], "x": 110, "y": 40 },
+            { "flags": 4, "matrix": [2, 3], "x": 110, "y": 27 },
+            { "flags": 4, "matrix": [1, 3], "x": 110, "y": 13 },
+            { "flags": 4, "matrix": [0, 3], "x": 110, "y": 0 },
+            { "flags": 4, "matrix": [0, 4], "x": 147, "y": 4 },
+            { "flags": 4, "matrix": [1, 4], "x": 147, "y": 18 },
+            { "flags": 4, "matrix": [2, 4], "x": 147, "y": 31 },
+            { "flags": 4, "matrix": [3, 4], "x": 147, "y": 44 },
+            { "flags": 4, "matrix": [3, 5], "x": 183, "y": 46 },
+            { "flags": 4, "matrix": [2, 5], "x": 183, "y": 32 },
+            { "flags": 4, "matrix": [1, 5], "x": 183, "y": 19 },
+            { "flags": 4, "matrix": [0, 5], "x": 183, "y": 6 },
+            { "flags": 4, "matrix": [0, 6], "x": 220, "y": 7 },
+            { "flags": 4, "matrix": [1, 6], "x": 220, "y": 20 },
+            { "flags": 4, "matrix": [2, 6], "x": 220, "y": 34 },
+            { "flags": 4, "matrix": [3, 6], "x": 220, "y": 47 },
+            { "flags": 4, "matrix": [4, 6], "x": 224, "y": 64 },
+            { "flags": 4, "matrix": [4, 5], "x": 185, "y": 60 },
+            { "flags": 4, "matrix": [4, 4], "x": 145, "y": 59 },
+            { "flags": 4, "matrix": [4, 3], "x": 108, "y": 59 }
+        ]
+    },
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0845",
+        "vid": "0xFEED"
+    }
+}
