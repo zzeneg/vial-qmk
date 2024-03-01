@@ -11,6 +11,7 @@
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
 
-#define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP10
-#define I2C1_SCL_PIN GP11
+/* swap display/trackpads sides */
+#define STRONT_DISPLAY_RIGHT
+#define POINTING_DEVICE_LEFT
+#undef POINTING_DEVICE_ROTATION_180

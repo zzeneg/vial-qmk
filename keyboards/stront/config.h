@@ -16,6 +16,7 @@
 #define SPLIT_POINTING_ENABLE
 
 /* SPI config for display/touchpad */
+#define STRONT_DISPLAY_LEFT
 #define SPI_DRIVER SPID1
 #define SPI_SCK_PIN GP10
 #define SPI_MOSI_PIN GP11
@@ -26,6 +27,7 @@
 #define POINTING_DEVICE_CS_PIN GP9
 #define POINTING_DEVICE_ROTATION_180
 #define CIRQUE_PINNACLE_DIAMETER_MM 40
+// #define CIRQUE_PINNACLE_ATTENUATION EXTREG__TRACK_ADCCONFIG__ADC_ATTENUATE_2X // enable for curved overlay
 
 /* LCD config */
 #define LCD_DC_PIN GP12
