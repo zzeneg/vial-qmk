@@ -82,13 +82,13 @@ bool display_init_kb(void) {
     backlight_enable();
 
 #ifdef QUANTUM_PAINTER_ST7789_SPI_ENABLE
-    painter_device_t display = qp_st7789_make_spi_device(240, 300, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 16, 3);
-    qp_set_viewport_offsets(display, 0, 20);
+    painter_device_t display = qp_st7789_make_spi_device(STRONT_DISPLAY_WIDTH, STRONT_DISPLAY_HEIGHT, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 16, 3);
+    qp_set_viewport_offsets(display, STRONT_DISPLAY_OFFSET_X, STRONT_DISPLAY_OFFSET_Y);
 #elif QUANTUM_PAINTER_GC9A01_SPI_ENABLE
     painter_device_t display = qp_gc9a01_make_spi_device(240, 240, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 16, 3);
 #endif
 
-    if (!qp_init(display, QP_ROTATION_180) || !qp_power(display, true) || !qp_lvgl_attach(display)) return false;
+    if (!qp_init(display, STRONT_DISPLAY_ROTATION) || !qp_power(display, true) || !qp_lvgl_attach(display)) return false;
 
     dprint("display_init_kb - initialised\n");
 

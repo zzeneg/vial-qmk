@@ -1,4 +1,4 @@
-// Copyright 2023 zzeneg (@zzeneg)
+// Copyright 2022 zzeneg (@zzeneg)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -10,7 +10,3 @@
 #define VIAL_UNLOCK_COMBO_COLS { 4, 4 }
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
-
-#define I2C_DRIVER I2CD1
-#define I2C1_SDA_PIN GP10
-#define I2C1_SCL_PIN GP11

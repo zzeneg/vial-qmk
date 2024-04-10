@@ -1,19 +1,12 @@
-// Copyright 2023 zzeneg (@zzeneg)
+// Copyright 2022 zzeneg (@zzeneg)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
 
-enum layer_number {
-    // clang-format off
-    _QWERTY = 0,
-    _GAME,
-    _NAV,
-    _NUMBER,
-    _SYMBOL,
-    _FUNC,
-    _SYS
-    // clang-format on
-};
+#include "hid_display.h"
+#include "display.h"
+#include "raw_hid.h"
+#include "transactions.h"
 
 // Left-hand home row mods
 #define HOME_A LGUI_T(KC_A)
@@ -106,7 +99,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format on
 };
 
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
+#ifdef ENCODER_MAP_ENABLE
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     // clang-format off
     [_QWERTY] = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
     [_GAME]   = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
@@ -114,6 +108,71 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [_NUMBER] = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
     [_SYMBOL] = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
     [_FUNC]   = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
-    [_SYS]    = { ENCODER_CCW_CW(KC_LEFT, KC_RGHT), ENCODER_CCW_CW(KC_MPRV, KC_MNXT) },
+    [_SYS]    = { ENCODER_CCW_CW(BL_DOWN, BL_UP),   ENCODER_CCW_CW(KC_MPRV, KC_MNXT) }
     // clang-format on
 };
+#endif // ENCODER_MAP_ENABLE
+
+/* Caps Word processing */
+#ifdef CAPS_WORD_ENABLE
+void caps_word_set_user(bool active) {
+    if (is_display_enabled()) {
+        display_process_caps(active);
+    } else if (is_keyboard_master() && !is_display_side()) {
+        dprintf("RPC_ID_USER_CAPS_WORD_SYNC: %s\n", active ? "active" : "inactive");
+        transaction_rpc_send(RPC_ID_USER_CAPS_WORD_SYNC, 1, &active);
+    }
+}
+#endif
+
+/* Active Layer processing */
+layer_state_t layer_state_set_user(layer_state_t state) {
+    if (is_display_enabled()) {
+        display_process_layer_state(get_highest_layer(state));
+    } else if (is_keyboard_master() && !is_display_side()) {
+        uint8_t layer = get_highest_layer(state);
+        dprintf("RPC_ID_USER_LAYER_SYNC: %u\n", layer);
+        transaction_rpc_send(RPC_ID_USER_LAYER_SYNC, 1, &layer);
+    }
+
+    return state;
+}
+
+/* Raw HID processing*/
+void raw_hid_receive_kb(uint8_t *data, uint8_t length) {
+    dprintf("raw_hid_receive - received %u bytes \n", length);
+
+    if (is_display_enabled()) {
+        display_process_raw_hid_data(data, length);
+    } else if (is_keyboard_master() && !is_display_side()) {
+        dprint("RPC_ID_USER_HID_SYNC \n");
+        transaction_rpc_send(RPC_ID_USER_HID_SYNC, length, data);
+    }
+}
+
+void hid_sync(uint8_t initiator2target_buffer_size, const void *initiator2target_buffer, uint8_t target2initiator_buffer_size, void *target2initiator_buffer) {
+    if (is_display_enabled()) {
+        display_process_raw_hid_data((uint8_t *)initiator2target_buffer, initiator2target_buffer_size);
+    }
+}
+
+void layer_sync(uint8_t initiator2target_buffer_size, const void *initiator2target_buffer, uint8_t target2initiator_buffer_size, void *target2initiator_buffer) {
+    if (is_display_enabled()) {
+        display_process_layer_state(*(uint8_t *)initiator2target_buffer);
+    }
+}
+
+void caps_word_sync(uint8_t initiator2target_buffer_size, const void *initiator2target_buffer, uint8_t target2initiator_buffer_size, void *target2initiator_buffer) {
+    if (is_display_enabled()) {
+        display_process_caps(*(bool *)initiator2target_buffer);
+    }
+}
+
+void keyboard_post_init_user() {
+    // sync received hid data
+    transaction_register_rpc(RPC_ID_USER_HID_SYNC, hid_sync);
+    // sync highest layer (a bit more performant than standard SPLIT_LAYER_STATE_ENABLE)
+    transaction_register_rpc(RPC_ID_USER_LAYER_SYNC, layer_sync);
+    // sync caps word state
+    transaction_register_rpc(RPC_ID_USER_CAPS_WORD_SYNC, caps_word_sync);
+}

@@ -82,12 +82,12 @@ void init_screen_home_custom(void) {
 
     label_layer = lv_label_create(bottom_row);
     lv_label_set_text(label_layer, "");
-    lv_obj_align(label_layer, LV_ALIGN_LEFT_MID, 20, 0);
+    lv_obj_align(label_layer, LV_ALIGN_LEFT_MID, 10, 0);
     display_process_layer_state(0);
 
     label_layout = lv_label_create(bottom_row);
     lv_label_set_text(label_layout, "");
-    lv_obj_align(label_layout, LV_ALIGN_RIGHT_MID, -20, 0);
+    lv_obj_align(label_layout, LV_ALIGN_RIGHT_MID, -10, 0);
     set_layout_label(0);
 
     label_caps = create_button(screen_home, "CAPS", &style_button, &style_button_active);

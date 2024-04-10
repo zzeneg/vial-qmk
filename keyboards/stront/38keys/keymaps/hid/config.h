@@ -1,4 +1,4 @@
-// Copyright 2023 zzeneg (@zzeneg)
+// Copyright 2022 zzeneg (@zzeneg)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -11,7 +11,4 @@
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
 
-/* swap display/trackpads sides */
-#define STRONT_DISPLAY_RIGHT
-#define POINTING_DEVICE_LEFT
-#undef POINTING_DEVICE_ROTATION_180
+#define SPLIT_TRANSACTION_IDS_USER RPC_ID_USER_HID_SYNC, RPC_ID_USER_CAPS_WORD_SYNC, RPC_ID_USER_LAYER_SYNC
