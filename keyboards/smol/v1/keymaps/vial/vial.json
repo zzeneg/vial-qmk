@@ -1,14 +1,10 @@
 {
-    "name": "smol",
-    "vendorId": "0xFEED",
-    "productId": "0x6037",
     "lighting": "vialrgb",
     "matrix": {
         "rows": 8,
         "cols": 5
     },
     "layouts": {
-        "labels": [],
         "keymap": [
             [{ "x": 3 }, "0,2", { "x": 8 }, "7,2"],
             [{ "y": -0.75, "x": 2 }, "0,1", { "x": 10 }, "7,3"],
