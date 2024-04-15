@@ -20,7 +20,7 @@
         "extrakey": true,
         "encoder": true,
         "rgblight": true,
-        "nkro": true
+        "nkro": false
     },
     "rgblight": {
         "led_count": 1,
@@ -55,8 +55,5 @@
         "device_version": "1.0.0",
         "pid": "0x0842",
         "vid": "0xFEED"
-    },
-    "build": {
-        "lto": true
     }
 }
