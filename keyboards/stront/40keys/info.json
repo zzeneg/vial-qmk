@@ -109,5 +109,10 @@
             { "flags": 4, "matrix": [4, 3], "x": 167, "y": 4 },
             { "flags": 4, "matrix": [4, 4], "x": 153, "y": 6 }
         ]
+    },
+    "split": {
+        "bootmagic": {
+            "matrix": [7, 0]
+        }
     }
 }
