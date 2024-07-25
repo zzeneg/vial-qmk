@@ -1,1 +1,1 @@
-WS2812_DRIVER = vendor
+DEFAULT_FOLDER = gameboard/v2
