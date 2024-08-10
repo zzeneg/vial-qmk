@@ -1,4 +1,17 @@
 {
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "mousekey": true,
+        "extrakey": true,
+        "encoder": false,
+        "rgblight": false,
+        "rgb_matrix": true,
+        "nkro": true,
+        "backlight": false,
+        "quantum_painter": false
+    },
     "layouts": {
         "LAYOUT": {
             "layout": [
