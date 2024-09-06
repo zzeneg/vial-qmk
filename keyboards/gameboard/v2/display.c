@@ -24,7 +24,7 @@ static lv_obj_t *label_caps;
 void init_styles(void) {
     lv_style_init(&style_screen);
     lv_style_set_bg_color(&style_screen, lv_color_black());
-    lv_style_set_pad_all(&style_screen, 10);
+    lv_style_set_pad_all(&style_screen, 6);
 
     lv_style_init(&style_container);
     lv_style_set_pad_all(&style_container, 0);
@@ -67,10 +67,16 @@ void init_screen_home(void) {
     label_ctrl  = create_button(mods_row2, "CTL", &style_button, &style_button_active);
     label_shift = create_button(mods_row2, "SFT", &style_button, &style_button_active);
 
-    lv_obj_t *label_stront = lv_label_create(screen_home);
-    lv_label_set_text(label_stront, "stront");
+    lv_obj_t *gameboard = lv_obj_create(screen_home);
+    lv_obj_add_style(gameboard, &style_container, LV_PART_MAIN);
+    use_flex_column(gameboard);
+    lv_obj_t *label_game = lv_label_create(gameboard);
+    lv_label_set_text(label_game, "game");
+    lv_obj_t *label_board = lv_label_create(gameboard);
+    lv_label_set_text(label_board, "board");
 #if LV_FONT_MONTSERRAT_48
-    lv_obj_set_style_text_font(label_stront, &lv_font_montserrat_48, LV_PART_MAIN);
+    lv_obj_set_style_text_font(label_game, &lv_font_montserrat_48, LV_PART_MAIN);
+    lv_obj_set_style_text_font(label_board, &lv_font_montserrat_48, LV_PART_MAIN);
 #endif
 
     label_caps = create_button(screen_home, "CAPS", &style_button, &style_button_active);

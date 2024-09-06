@@ -17,11 +17,11 @@
 #undef LV_FONT_MONTSERRAT_14
 #define LV_FONT_MONTSERRAT_14 0
 
-#undef LV_FONT_MONTSERRAT_20
-#define LV_FONT_MONTSERRAT_20 1
+#undef LV_FONT_MONTSERRAT_24
+#define LV_FONT_MONTSERRAT_24 1
 
 #undef LV_FONT_DEFAULT
-#define LV_FONT_DEFAULT &lv_font_montserrat_20
+#define LV_FONT_DEFAULT &lv_font_montserrat_24
 
 /* add large font */
 #undef LV_FONT_MONTSERRAT_48

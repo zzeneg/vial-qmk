@@ -5,7 +5,7 @@
 Game controller with MX/KS-33 switches.
 
 -   Keyboard Maintainer: [zzeneg](https://github.com/zzeneg)
--   Hardware Supported: gameboard PCB, Waveshare RP2040 Zero
+-   Hardware Supported: gameboard PCB, RP2040 MCU (v1 - Waveshare Zero, v2 - Helios-like Pro Micro, 23 pin)
 -   Hardware Availability: [GitHub](https://github.com/zzeneg/gameboard)
 
 Make example for this keyboard (after setting up your build environment):
