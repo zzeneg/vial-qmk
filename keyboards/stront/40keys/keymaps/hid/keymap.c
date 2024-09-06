@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H
 
-#include "../../../38keys/keymaps/hid/hid_display.h"
+#include "./../../../38keys/keymaps/hid/hid_display.h"
 #include "display.h"
 #include "raw_hid.h"
 #include "transactions.h"
