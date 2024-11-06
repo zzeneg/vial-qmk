@@ -509,6 +509,7 @@ __attribute__((weak)) uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *r
 #endif
 }
 
+#ifdef VIAL_TAP_DANCE_ENABLE
 uint16_t tap_dance_count(void) {
     return VIAL_TAP_DANCE_ENTRIES;
 }
@@ -518,6 +519,8 @@ tap_dance_action_t* tap_dance_get(uint16_t tap_dance_idx) {
         return NULL;
     return &tap_dance_actions[tap_dance_idx];
 }
+#endif
+
 #endif
 
 #ifdef VIAL_COMBO_ENABLE
