@@ -59,9 +59,6 @@
         "cols": ["A7", "A6", "A5", "A4", "A3"],
         "rows": ["B10", "B2", "B1", "B0", "B12", "B13", "B14", "B15"]
     },
-    "backlight": {
-        "pin": "A1"
-    },
     "encoder": {
         "rotary": [
             {
@@ -77,7 +74,6 @@
         "encoder": true,
         "backlight": false,
         "extrakey": true,
-        "mousekey": false,
         "rgblight": false,
         "rgb_matrix": false,
         "nkro": false

@@ -2,7 +2,10 @@ VIA_ENABLE = yes
 VIAL_ENABLE = yes
 
 CAPS_WORD_ENABLE = yes
-
 RAW_ENABLE = yes
+
+QMK_SETTINGS = no
+TAP_DANCE_ENABLE = no
+KEY_OVERRIDE_ENABLE = no
 
 SRC += hid_display.c

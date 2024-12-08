@@ -79,11 +79,9 @@ void init_screen_home(void) {
 bool display_init_kb(void) {
     dprint("display_init_kb - start\n");
 
-    // backlight_enable();
-
     painter_device_t display = qp_gc9a01_make_spi_device(240, 240, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 16, 3);
 
-    if (!qp_init(display, QP_ROTATION_0) || !qp_power(display, true) || !qp_lvgl_attach(display)) return false;
+    if (!qp_init(display, QP_ROTATION_180) || !qp_power(display, true) || !qp_lvgl_attach(display)) return false;
 
     dprint("display_init_kb - initialised\n");
 
