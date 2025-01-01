@@ -3,8 +3,8 @@
     "manufacturer": "zzeneg",
     "url": "https://github.com/zzeneg/molekula",
     "maintainer": "zzeneg",
-    "processor": "STM32F072",
-    "bootloader": "stm32-dfu",
+    "processor": "RP2040",
+    "bootloader": "rp2040",
     "diode_direction": "COL2ROW",
     "layouts": {
         "LAYOUT": {
@@ -56,23 +56,26 @@
         }
     },
     "matrix_pins": {
-        "cols": ["A7", "A6", "A5", "A4", "A3"],
-        "rows": ["B10", "B2", "B1", "B0", "B12", "B13", "B14", "B15"]
+        "cols": ["GP4", "GP3", "GP2", "GP1", "GP0"],
+        "rows": ["GP12", "GP13", "GP14", "GP15", "GP5", "GP6", "GP7", "GP8"]
     },
     "encoder": {
         "rotary": [
             {
-                "pin_a": "B8",
-                "pin_b": "B9",
-                "resolution": 2
+                "pin_a": "GP29",
+                "pin_b": "GP28",
+                "resolution": 1
             }
         ]
+    },
+    "backlight": {
+        "pin": "GP27"
     },
     "features": {
         "bootmagic": true,
         "console": false,
         "encoder": true,
-        "backlight": false,
+        "backlight": true,
         "extrakey": true,
         "rgblight": false,
         "rgb_matrix": false,

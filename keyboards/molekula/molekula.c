@@ -36,20 +36,16 @@ bool led_update_kb(led_t led_state) {
     return res;
 }
 
-uint16_t start_timer = 0;
-
 void housekeeping_task_kb(void) {
     if (display_enabled) {
         display_housekeeping_task();
-    } else if (timer_elapsed(start_timer) > 3000) {
-        display_enabled = display_init_kb();
     }
 
     housekeeping_task_user();
 }
 
 void keyboard_post_init_kb(void) {
-    keyboard_post_init_user();
+    display_enabled = display_init_kb();
 
-    start_timer = timer_read();
+    keyboard_post_init_user();
 }

@@ -7,18 +7,15 @@
 
 #include_next <lv_conf.h>
 
-/* Custom fonts:
-    - montserrat_20_en - basic latin symbols, range 0x20-0x7E
- */
-#undef LV_FONT_CUSTOM_DECLARE
-#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(montserrat_20_en)
-
 /* change default font */
 #undef LV_FONT_MONTSERRAT_14
 #define LV_FONT_MONTSERRAT_14 0
 
+#undef LV_FONT_MONTSERRAT_20
+#define LV_FONT_MONTSERRAT_20 1
+
 #undef LV_FONT_DEFAULT
-#define LV_FONT_DEFAULT &montserrat_20_en
+#define LV_FONT_DEFAULT &lv_font_montserrat_20
 
 /* features */
 #undef LV_DRAW_COMPLEX

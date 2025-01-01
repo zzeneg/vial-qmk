@@ -11,6 +11,7 @@
 /* shared styles */
 extern lv_style_t style_screen;
 extern lv_style_t style_container;
+extern lv_style_t style_text;
 extern lv_style_t style_button;
 extern lv_style_t style_button_active;
 

@@ -6,6 +6,5 @@ RAW_ENABLE = yes
 
 QMK_SETTINGS = no
 TAP_DANCE_ENABLE = no
-KEY_OVERRIDE_ENABLE = no
 
 SRC += hid_display.c

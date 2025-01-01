@@ -8,6 +8,7 @@
 /* shared styles */
 lv_style_t style_screen;
 lv_style_t style_container;
+lv_style_t style_text;
 lv_style_t style_button;
 lv_style_t style_button_active;
 
@@ -23,7 +24,6 @@ static lv_obj_t *label_caps;
 
 void init_styles(void) {
     lv_style_init(&style_screen);
-    lv_style_set_bg_color(&style_screen, lv_color_black());
     lv_style_set_pad_all(&style_screen, 10);
 
     lv_style_init(&style_container);
@@ -32,6 +32,9 @@ void init_styles(void) {
     lv_style_set_border_width(&style_container, 0);
     lv_style_set_width(&style_container, lv_pct(100));
     lv_style_set_height(&style_container, LV_SIZE_CONTENT);
+
+    lv_style_init(&style_text);
+    lv_style_set_text_color(&style_text, lv_color_white());
 
     lv_style_init(&style_button);
     lv_style_set_pad_all(&style_button, 4);
@@ -68,6 +71,7 @@ void init_screen_home(void) {
     label_shift = create_button(mods_row2, "SFT", &style_button, &style_button_active);
 
     lv_obj_t *label_molekula = lv_label_create(screen_home);
+    lv_obj_add_style(label_molekula, &style_text, LV_PART_MAIN);
     lv_label_set_text(label_molekula, "molekula");
 #if LV_FONT_MONTSERRAT_48
     lv_obj_set_style_text_font(label_molekula, &lv_font_montserrat_48, LV_PART_MAIN);
@@ -79,20 +83,23 @@ void init_screen_home(void) {
 bool display_init_kb(void) {
     dprint("display_init_kb - start\n");
 
+    backlight_enable();
+
     painter_device_t display = qp_gc9a01_make_spi_device(240, 240, LCD_CS_PIN, LCD_DC_PIN, LCD_RST_PIN, 16, 3);
 
-    if (!qp_init(display, QP_ROTATION_180) || !qp_power(display, true) || !qp_lvgl_attach(display)) return false;
+    if (!qp_init(display, QP_ROTATION_0) || !qp_power(display, true) || !qp_lvgl_attach(display)) return false;
 
     dprint("display_init_kb - initialised\n");
 
+    lv_disp_t *lv_display = lv_disp_get_default();
 #if LV_USE_THEME_DEFAULT == 1
-    lv_disp_t  *lv_display = lv_disp_get_default();
-    lv_theme_t *lv_theme   = lv_theme_default_init(lv_display, lv_palette_main(LV_PALETTE_AMBER), lv_palette_main(LV_PALETTE_BLUE), true, LV_FONT_DEFAULT);
+    lv_theme_t *lv_theme = lv_theme_default_init(lv_display, lv_palette_main(LV_PALETTE_AMBER), lv_palette_main(LV_PALETTE_BLUE), true, LV_FONT_DEFAULT);
     lv_disp_set_theme(lv_display, lv_theme);
 #elif LV_USE_THEME_BASIC == 1
-    lv_disp_t  *lv_display = lv_disp_get_default();
-    lv_theme_t *lv_theme   = lv_theme_basic_init(lv_display);
+    lv_theme_t *lv_theme = lv_theme_basic_init(lv_display);
     lv_disp_set_theme(lv_display, lv_theme);
+#else
+    lv_disp_set_bg_color(lv_display, lv_color_black());
 #endif
     init_styles();
 
