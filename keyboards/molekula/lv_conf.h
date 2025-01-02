@@ -14,6 +14,9 @@
 #undef LV_FONT_MONTSERRAT_20
 #define LV_FONT_MONTSERRAT_20 1
 
+#undef LV_FONT_MONTSERRAT_48
+#define LV_FONT_MONTSERRAT_48 1
+
 #undef LV_FONT_DEFAULT
 #define LV_FONT_DEFAULT &lv_font_montserrat_20
 
@@ -117,7 +120,3 @@
 #define LV_USE_FLEX 1
 #undef LV_USE_GRID
 #define LV_USE_GRID 0
-
-/* disable build examples */
-#undef LV_BUILD_EXAMPLES
-#define LV_BUILD_EXAMPLES 0

@@ -4,7 +4,4 @@ VIAL_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 RAW_ENABLE = yes
 
-QMK_SETTINGS = no
-TAP_DANCE_ENABLE = no
-
-SRC += hid_display.c
+SRC += ./../../hid_display.c

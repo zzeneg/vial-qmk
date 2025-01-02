@@ -3,9 +3,19 @@
 
 #include QMK_KEYBOARD_H
 
-#include "zzeneg_display.h"
+#include "hid_display.h"
 #include "display.h"
 #include "raw_hid.h"
+
+typedef enum {
+    _QWERTY = 0,
+    _EU,
+    _NAV,
+    _NUMBER,
+    _SYMBOL,
+    _FUNC,
+    _GAME,
+} layer_number;
 
 // Left-hand home row mods
 #define HOME_A LGUI_T(KC_A)
@@ -174,9 +184,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 /* Active Layer processing */
+static void display_process_layer(uint8_t layer) {
+    switch (layer) {
+        case _QWERTY:
+            display_set_layer("QWERTY");
+            break;
+        case _GAME:
+            display_set_layer("GAME");
+            break;
+        case _EU:
+            display_set_layer("EU");
+            break;
+        case _NAV:
+            display_set_layer("NAV");
+            break;
+        case _NUMBER:
+            display_set_layer("NUMBER");
+            break;
+        case _SYMBOL:
+            display_set_layer("SYMBOL");
+            break;
+        case _FUNC:
+            display_set_layer("FUNC");
+            break;
+    }
+}
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     if (is_display_enabled()) {
-        display_process_layer_state(get_highest_layer(state));
+        display_process_layer(get_highest_layer(state));
     }
 
     return state;
@@ -216,5 +252,11 @@ void raw_hid_receive_kb(uint8_t *data, uint8_t length) {
 
     if (is_display_enabled()) {
         display_process_raw_hid_data(data, length);
+    }
+}
+
+void keyboard_post_init_user(void) {
+    if (is_display_enabled()) {
+        display_process_layer(0);
     }
 }

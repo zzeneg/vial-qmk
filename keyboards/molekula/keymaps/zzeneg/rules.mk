@@ -9,6 +9,5 @@ TAP_DANCE_ENABLE = no
 CAPS_WORD_ENABLE = yes
 RAW_ENABLE = yes
 
-SRC +=  zzeneg_display.c \
+SRC +=  ./../../hid_display.c \
 		fonts/montserrat_20_en_ru.c \
-		fonts/montserrat_48_digits.c
