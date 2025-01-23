@@ -7,7 +7,7 @@
 
 /* VIAL secure unlock keystroke - currently both middle thumb keys */
 #define VIAL_UNLOCK_COMBO_ROWS {3, 7}
-#define VIAL_UNLOCK_COMBO_COLS {4, 4}
+#define VIAL_UNLOCK_COMBO_COLS {4, 0}
 
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
 

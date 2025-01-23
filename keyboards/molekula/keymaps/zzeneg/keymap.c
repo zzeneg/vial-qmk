@@ -30,8 +30,8 @@ typedef enum {
 #define HOME_P RGUI_T(KC_P)
 
 // bottom mods
-#define SYM_TAB LT(_SYMBOL, KC_TAB)
-#define NUM_SPC LT(_NUMBER, KC_SPC)
+#define NUM_TAB LT(_NUMBER, KC_TAB)
+#define SYM_SPC LT(_SYMBOL, KC_SPC)
 #define FUNC_ESC LT(_FUNC, KC_ESC)
 #define NAV_BSPC LT(_NAV, KC_BSPC)
 #define EU_DEL LT(_EU, KC_DEL)
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,     KC_U,     KC_I,     KC_O,
         KC_Q,     HOME_A,   HOME_S,   HOME_D,   HOME_F,   KC_G,                KC_H,     HOME_J,   HOME_K,   HOME_L,   HOME_P,   KC_SCLN,
                   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,
-                                        FUNC_ESC,  NUM_SPC,  SYM_TAB,     KC_ENT,  NAV_BSPC,  EU_DEL
+                                        FUNC_ESC,  SYM_SPC,  NUM_TAB,     KC_ENT,  NAV_BSPC,  EU_DEL
     ),
 
     [_EU] = LAYOUT(
@@ -95,14 +95,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             KC_F7,    KC_F8,    KC_F9,    KC_F11,              BL_UP,    KC_PSCR,  KC_SCRL,  KC_PAUS,
         XXXXXXX,  KC_LCTL,  KC_F4,    KC_F5,    KC_F6,    KC_F12,              BL_TOGG,  KC_RSFT,  KC_RCTL,  KC_LALT,  KC_RGUI,  XXXXXXX,
                   XXXXXXX,  KC_F1,    KC_F2,    KC_F3,    KC_F10,              BL_DOWN,  KC_CAPS,  KC_NUM,   XXXXXXX,  XXXXXXX,
-                                        _______,  KC_MNXT,  KC_MPLY,      _______,  _______,  _______
+                                        _______,  KC_MNXT,  KC_MPLY,      QK_BOOT,  _______,  _______
     ),
 
     [_GAME] = LAYOUT(
                             KC_W,     KC_E,     KC_R,     KC_T,                KC_Y,     KC_U,     KC_I,     KC_O,
         LALT_Q,   KC_A,     KC_S,     KC_D,     KC_F,     KC_G,                KC_H,     KC_J,     KC_K,     KC_L,     KC_P,     LGUI_SCLN,
                   KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,
-                                        LCTL_ESC,  NUM_SPC,  SYM_TAB,    LSFT_ENT,  NAV_BSPC,  EU_DEL
+                                        LCTL_ESC,  SYM_SPC,  NUM_TAB,    LSFT_ENT,  NAV_BSPC,  EU_DEL
     ),
     // clang-format on
 };
